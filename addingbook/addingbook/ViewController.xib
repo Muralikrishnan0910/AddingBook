@@ -9,7 +9,7 @@
                 <outlet property="authorTextfield" destination="mVj-xz-d00" id="zw1-zr-77a"/>
                 <outlet property="bookTitleTextfield" destination="SzR-TV-cAE" id="zgv-br-6rT"/>
                 <outlet property="datePick" destination="TF7-Zw-PY3" id="e36-Mr-5uX"/>
-                <outlet property="displayadded" destination="EOb-CN-t6C" id="Rg6-3w-3YU"/>
+                <outlet property="datelabel" destination="EOb-CN-t6C" id="KFX-89-LvD"/>
                 <outlet property="mandatoryDisplay1" destination="a0d-u6-vTD" id="STT-DP-mGS"/>
                 <outlet property="mandatoryDisplay2" destination="AXo-1b-mos" id="0Yh-aB-2ug"/>
                 <outlet property="mandatoryDisplay4" destination="dMz-x6-Tdd" id="f5d-yP-k19"/>
@@ -67,6 +67,7 @@
                     <rect key="frame" x="114" y="273" width="192" height="30"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RPk-79-Lvh">
@@ -115,7 +116,7 @@
                                 <!--2014-01-28 05:55:25 +0000-->
                             </date>
                             <timeZone key="timeZone" name="America/Los_Angeles">
-                                <mutableData key="data">
+                                <data key="data">
 VFppZgAAAAAAAAAAAAAAAAAAAAAAAAAEAAAABAAAAAAAAAC5AAAABAAAABCepkign7sVkKCGKqChmveQ
 y4kaoNIj9HDSYSYQ1v50INiArZDa/tGg28CQENzes6DdqayQ3r6VoN+JjpDgnneg4WlwkOJ+WaDjSVKQ
 5F47oOUpNJDmR1gg5xJREOgnOiDo8jMQ6gccIOrSFRDr5v4g7LH3EO3G4CDukdkQ76/8oPBxuxDxj96g
@@ -133,7 +134,7 @@ f5gqkAABAAECAwEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEAAQABAAEA
 AQABAAEAAQAB//+dkAEA//+PgAAE//+dkAEI//+dkAEMUERUAFBTVABQV1QAUFBUAAAAAAEAAAABA
-</mutableData>
+</data>
                             </timeZone>
                             <connections>
                                 <action selector="done:" destination="-1" eventType="valueChanged" id="Ieh-np-lMi"/>

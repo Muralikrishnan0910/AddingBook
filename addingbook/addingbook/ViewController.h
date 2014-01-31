@@ -10,13 +10,14 @@
 
 @interface ViewController : UIViewController<UITextFieldDelegate>
 {
-    UIDatePicker *datePick;
+    IBOutlet UIDatePicker *datePick;
+    IBOutlet UILabel *datelabel;
 }
 @property (weak, nonatomic) IBOutlet UITextField *bookTitleTextfield;
 @property (weak, nonatomic) IBOutlet UITextField *authorTextfield;
-@property (weak, nonatomic) IBOutlet UILabel *displayadded;
+@property (atomic, retain) IBOutlet UILabel *datelabel;
 @property (retain, nonatomic) IBOutlet UITextField *totalPageTextfield;
-@property (retain, nonatomic) IBOutlet UIDatePicker *datePick;
+@property (retain, atomic) IBOutlet UIDatePicker *datePick;
 @property (weak, nonatomic) IBOutlet UIView *pickview;
 @property (weak, nonatomic) IBOutlet UILabel *mandatoryDisplay1;
 @property (weak, nonatomic) IBOutlet UILabel *mandatoryDisplay2;

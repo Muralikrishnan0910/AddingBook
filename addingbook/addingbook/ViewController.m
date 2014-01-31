@@ -15,7 +15,7 @@
 @end
 
 @implementation ViewController
-@synthesize bookTitleTextfield,authorTextfield,displayadded,totalPageTextfield,datePick,pickview,mandatoryDisplay1,mandatoryDisplay2,mandatoryDisplay4;
+@synthesize bookTitleTextfield,authorTextfield,totalPageTextfield,datePick,pickview,mandatoryDisplay1,mandatoryDisplay2,mandatoryDisplay4,datelabel;
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -47,17 +47,34 @@
 - (IBAction)startDate:(id)sender
 {
     [UIView beginAnimations:nil context:NULL];
-    [UIView setAnimationDuration:0.3];
+    [UIView setAnimationDuration:0.6];
     pickview.frame=CGRectMake(0,366,320,172);
-   [UIView commitAnimations];
-   
+    [UIView commitAnimations];
+
+    NSDateFormatter *df = [[NSDateFormatter alloc]init];
+    df.dateStyle = NSDateFormatterMediumStyle;
+    datelabel.text=[NSString stringWithFormat:@"%@",[df stringFromDate:[NSDate date]]];
+    //datePick=[[UIDatePicker alloc]initWithFrame:CGRectMake(0, 250, 325, 300)];
+    datePick.datePickerMode=UIDatePickerModeDate;
+   // datePick.hidden=NO;
+    datePick.date=[NSDate date];
+    [datePick addTarget:self action:@selector(labelChange:) forControlEvents:UIControlEventValueChanged];
+    
+    //[self.view addSubview:datePick];
+    //[self.view addSubview:datelabel];
+ 
+ 
 }
 
 - (IBAction)done:(id)sender
 {
-    NSDate *dateselected=[datePick date];
-    NSString *datestamp=[[NSString alloc]initWithFormat:@"%@",dateselected];
-    displayadded.text=datestamp;
+    NSDateFormatter *ef=[[NSDateFormatter alloc]init];
+    ef.dateStyle=NSDateFormatterMediumStyle;
+  //  NSDate *dateselected=[datePick date];
+   // NSString *datestamp=[[NSString alloc]initWithFormat:@"%@",dateselected];
+    datePick.datePickerMode=UIDatePickerModeDate;
+    [datePick addTarget:self action:@selector(labelChange:) forControlEvents:UIControlEventValueChanged];
+    datelabel.text=[NSString stringWithFormat:@"%@",[ef stringFromDate:[NSDate date]]];
 }
 
 - (IBAction)hide:(id)sender
@@ -101,13 +118,17 @@
     {
       mandatoryDisplay4.text=@"*";
     }
+    NSDateFormatter *df=[[NSDateFormatter alloc]init];
+    df.dateStyle=NSDateFormatterMediumStyle;
     
-    NSDate *choice = [datePick date];
-    NSString *words =[[NSString alloc]initWithFormat:@"The date is %@",choice];
+   NSString *choice=[NSString stringWithFormat:@"%@",[df stringFromDate:[NSDate date]]];
+    NSString *choice1=bookTitleTextfield.text;
+    NSString *choice2=authorTextfield.text;
+    NSString *words =[[NSString alloc]initWithFormat:@"\nBook Name: %@\n Author Name:%@\n Starting Date:%@",choice1,choice2,choice];
     NSString *words1=[[NSString alloc]initWithFormat:@"Fill the Empty Fields"];
     if (bookTitleTextfield.text.length>0&&authorTextfield.text.length>0&&totalPageTextfield.text.length>0) {
         
-    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"the title" message:words delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
+    UIAlertView *alert= [[UIAlertView alloc]initWithTitle:@"Book Added" message:words delegate:nil cancelButtonTitle:@"Ok" otherButtonTitles:nil, nil];
     [alert show];
         NSError *error;
         [context save:&error];
@@ -122,5 +143,10 @@
 -(BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     return [textField resignFirstResponder];
+}
+-(void)labelChange:(id)sender{
+    NSDateFormatter *df=[[NSDateFormatter alloc]init];
+    df.dateStyle=NSDateFormatterMediumStyle;
+    datelabel.text=[NSString stringWithFormat:@"%@",[df stringFromDate:datePick.date]];
 }
 @end
